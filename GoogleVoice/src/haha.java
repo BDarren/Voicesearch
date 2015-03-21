@@ -5,7 +5,7 @@ import org.json.simple.parser.ParseException;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 
-public class test {
+public class haha {
 
 	public static void main(String[] args) throws UnirestException, ParseException {
 		// TODO Auto-generated method stub
