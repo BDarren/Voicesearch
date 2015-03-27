@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+.menu{
+	display:block;
+	width:100px;
+	height:100px;
+	border-radius:50px;
+	font-size:20px;
+	color:#fff;
+	line-height:100px;
+	text-align:center;
+	text-decoration:none;
+	background:#000
+	position: relative;
+    -webkit-animation: myfirst 5s linear 2s infinite alternate; /* Chrome, Safari, Opera */
+    
+	}
+
+.menu:hover{
+	color:#5c5757;
+	text-decoration:none;
+	background:#5c5757
+	}
+	
+@-webkit-keyframes myfirst {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+}

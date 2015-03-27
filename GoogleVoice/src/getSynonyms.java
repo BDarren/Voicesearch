@@ -12,29 +12,36 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import edu.smu.tspell.wordnet.Synset;
+import edu.smu.tspell.wordnet.WordNetDatabase;
+
 
 public class getSynonyms {
 	
-	public List<String> getSynonyms1(String q) throws UnirestException, ParseException{
+	public List<String> getSynonyms1(String wordForm){
 		List<String> res = new ArrayList<String>();
+		//  Concatenate the command-line arguments
+		System.setProperty("wordnet.database.dir", "D:\\Applications\\WordNet\\2.1\\dict");
+		WordNetDatabase database = WordNetDatabase.getFileInstance();
+		Synset[] synsets = database.getSynsets(wordForm);
+		//  Display the word forms and definitions for synsets retrieved
+		if (synsets.length > 0)
+		{
+			for (int i = 0; i < synsets.length; i++)
+			{
+				System.out.println("");
+				String[] wordForms = synsets[i].getWordForms();
+				for (int j = 0; j < wordForms.length; j++)
+				{
+					res.add(wordForms[j]);
+				}
+			}
+		}
+		else
+		{
+			return null;
+		}
 		
-		HttpResponse<JsonNode> response = Unirest.get("https://wikisynonyms.p.mashape.com/"+q)
-				.header("X-Mashape-Key", "YNB6lEEFQ9mshetJhpx5xSFS0vJjp1nGjFZjsnvTpf0QvauWt4")
-				.header("Accept", "application/json")
-				.asJson();
-		
-		JSONParser parser = new JSONParser();
-		String responseJSONString = response.getBody().toString();
-		Object obj = parser.parse(responseJSONString);
-
-        JSONObject jsonObject = (JSONObject) obj;
-
-        JSONArray wordList = (JSONArray) jsonObject.get("terms");
-
-        Iterator<JSONObject> iterator = wordList.iterator();
-        while (iterator.hasNext()) {
-        	res.add((String) iterator.next().get("term"));
-        }
         return res;
 		
 	}
