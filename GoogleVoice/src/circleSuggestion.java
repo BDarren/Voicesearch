@@ -33,17 +33,11 @@ public class circleSuggestion extends HttpServlet{
         getSynonyms aa = new getSynonyms();
 		List<String> res = aa.getSynonyms1(sterm);
 
-        
-        for(int i=0; i<res.size(); i++){
-            out.println("<a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'>aa"+res.get(i)+"</a></h1>");
-        }
-        
-        response.setContentType("text/html;charset=UTF-8");
         out.println("<html lang='en'><head><link rel='stylesheet' type='text/css' href='circle.css'></head><body>");
         for(int i=0; i<res.size(); i++){
-        out.println("<a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'>"+res.get(i)+"</a></h1>");
+        	out.println("<a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'>"+res.get(i)+"</a></h1>");
         }
-        out.println("</body></html>");
+        	out.println("</body></html>");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
