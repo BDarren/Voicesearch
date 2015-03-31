@@ -37,7 +37,7 @@
     	</div>
     	</div>
   		<div class="row">
-  			<form method="get" action="http://www.google.com/search">
+  			<form method="post" action="circleSuggestion">
     		<div class="col-sm-2">
     		</div>
     		<div class="col-sm-8">
@@ -59,7 +59,7 @@
      			Upgrade to <a href="//www.google.com/chrome">Chrome</a>
      			version 25 or later.</p>
 			</div>
-  			<input type="search" class="form-control" id="final_span" name = "q" onchange="document.getElementById('sterm').value=this.value">
+  			<input type="search" class="form-control" id="final_span" name = "final_span">
   			<br>
 			<button id="search_button" type="submit" class="btn btn-info btn-lg">
       			<span class="glyphicon glyphicon-search"></span> Search
@@ -71,13 +71,6 @@
     			<img id="start_img" src="mic.gif" alt="Start"></button> 
     		</div>
     		</form>
-    		<div class="col-sm-8">
-    		<form method ="post" action = "circleSuggestion">
-                <input type="hidden" name="sterm" id="sterm" class="form-control">
-                <button class="btn btn-info btn-lg" type="submit">Suggestion</button>
-                
-            </form>
-            </div>
     	</div>
     </div>
 	<script>

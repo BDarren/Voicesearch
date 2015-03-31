@@ -25,20 +25,41 @@ public class circleSuggestion extends HttpServlet{
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException, UnirestException, ParseException {
-		String sterm = request.getParameter("sterm");
+		
+		String sterm = request.getParameter("final_span");
+		sterm = sterm.trim();
 		PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
-        out.println("<div>"+ sterm +"</div>");
+        //out.println("<div>"+ sterm +"</div>");
         
         getSynonyms aa = new getSynonyms();
 		List<String> res = aa.getSynonyms1(sterm);
 
-        out.println("<html lang='en'><head><link rel='stylesheet' type='text/css' href='circle.css'></head><body>");
-        for(int i=0; i<res.size(); i++){
-        	out.println("<a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'>"+res.get(i)+"</a></h1>");
+        out.println("<html lang='en'><head><link rel='stylesheet' type='text/css' href='circle.css'><link href='http://getbootstrap.com/dist/css/bootstrap.min.css' rel='stylesheet'></head><body bgcolor='#eee' style='margin: 60px;'><div class='content'><h1>Suggestion</h1><hr>");
+        out.println("<h3>User Input:   <a href='http://www.google.com/search?q="+sterm+"'><kbd>"+sterm+"</kbd></a></h3>");
+        out.println("<a class='btn btn-default' href='index.html'>Return to search homepage &raquo;</a>");
+        out.println("<div class = 'tablestyle'><table><tr>");
+        if (res != null && !res.isEmpty())
+        {	
+        	for(int i=0; i<Math.min(res.size(), 6); i++)
+        	{
+        		if(i==3)
+        		{
+        			out.println("</tr><tr>");
+        		}
+        		out.println("<th><a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'><span class='tempspan'>"+i+" . "+res.get(i)+"</span></a></th>");
+        	
+        	}
+        	
         }
-        	out.println("</body></html>");
+        else
+        {
+        	out.println("<th><a href='index.html' class='menu'>No Suggestions</a></th>");
+        }
+        out.println("</tr></table></div></div>");
+    	out.println("</body></html>");
 	}
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException {
