@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,6 +17,10 @@
 	<link rel="stylesheet" type="text/css" href="circle.css">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<%
+   		String word = request.getParameter( "stopword" );
+   		session.setAttribute( "stopword", word );
+	%>
   </head>
   <style>
   #start_button {
@@ -26,6 +33,16 @@
   <body>
 
     <div class="container">
+       <div class="row">
+    	<div class="col-sm-11">
+    	</div>
+    	<div class="col-sm-1">
+			<a class='btn btn-default' href='setting.jsp'>
+  					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			</a>
+			<input type="hidden" id="stopword" value= '<%= session.getAttribute("stopword")%>' />
+    	</div>
+    	</div>
     	</br></br></br></br></br></br></br>
     	<div class ="row">
     	<div class="col-sm-3">
@@ -72,6 +89,7 @@
     		</div>
     		</form>
     	</div>
+
     </div>
 	<script>
 showInfo('info_start');
@@ -80,6 +98,10 @@ var final_transcript = '';
 var recognizing = false;
 var ignore_onend;
 var start_timestamp;
+var stopword = document.getElementById('stopword').value;
+if(stopword == "null"){
+	stopword = 'go';
+}
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
@@ -134,7 +156,7 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     document.getElementById('final_span').value = linebreak(final_transcript)+linebreak(interim_transcript);
-    var index = final_transcript.indexOf("go");
+    var index = final_transcript.indexOf(stopword);
     if(index != -1){
     	document.getElementById('final_span').value = final_transcript.substring(0, index);
     	document.getElementById("search_button").click();
@@ -180,4 +202,3 @@ function showInfo(s) {
 </script>
   </body>
 </html>
-

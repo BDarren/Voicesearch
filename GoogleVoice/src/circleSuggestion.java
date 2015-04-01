@@ -3,6 +3,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,27 +35,27 @@ public class circleSuggestion extends HttpServlet{
         
         getSynonyms aa = new getSynonyms();
 		List<String> res = aa.getSynonyms1(sterm);
-
+		
+	      
         out.println("<html lang='en'><head><link rel='stylesheet' type='text/css' href='circle.css'><link href='http://getbootstrap.com/dist/css/bootstrap.min.css' rel='stylesheet'></head><body bgcolor='#eee' style='margin: 60px;'><div class='content'><h1>Suggestion</h1><hr>");
         out.println("<h3>User Input:   <a href='http://www.google.com/search?q="+sterm+"'><kbd>"+sterm+"</kbd></a></h3>");
-        out.println("<a class='btn btn-default' href='index.html'>Return to search homepage &raquo;</a>");
+        out.println("<a class='btn btn-default' href='index.jsp'>Return to search homepage &raquo;</a>");
         out.println("<div class = 'tablestyle'><table><tr>");
+        
+
         if (res != null && !res.isEmpty())
         {	
-        	for(int i=0; i<Math.min(res.size(), 6); i++)
-        	{
+    	    for(int i=0; i<Math.min(res.size(), 6); i++){
         		if(i==3)
         		{
         			out.println("</tr><tr>");
         		}
-        		out.println("<th><a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'><span class='tempspan'>"+i+" . "+res.get(i)+"</span></a></th>");
-        	
-        	}
-        	
+        		out.println("<th><a href='http://www.google.com/search?q="+res.get(i)+"' class='menu'><span class='tempspan'>"+(i+1)+" . "+res.get(i)+"</span></a></th>");
+    	    }      	
         }
         else
         {
-        	out.println("<th><a href='index.html' class='menu'>No Suggestions</a></th>");
+        	out.println("<th><a href='index.jsp' class='menu'><span class='tempspan'>No Suggestions</span></a></th>");
         }
         out.println("</tr></table></div></div>");
     	out.println("</body></html>");

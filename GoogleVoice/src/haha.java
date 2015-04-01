@@ -10,7 +10,7 @@ public class haha {
 	public static void main(String[] args) throws UnirestException, ParseException {
 		// TODO Auto-generated method stub
 		getSynonyms aa = new getSynonyms();
-		aa.getSynonyms1("cplusplus");
+		aa.getSynonyms1("eclipse");
 	}
 
 }

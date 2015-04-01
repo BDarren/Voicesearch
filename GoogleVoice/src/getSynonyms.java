@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -42,7 +45,8 @@ public class getSynonyms {
 			return null;
 		}
 		
-        return res;
+		List<String> depduperes = new ArrayList<>(new LinkedHashSet<>(res));
+        return depduperes;
 		
 	}
 
