@@ -33,9 +33,11 @@ public class circleSuggestion extends HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
         //out.println("<div>"+ sterm +"</div>");
         
-        getSynonyms aa = new getSynonyms();
-		List<String> res = aa.getSynonyms1(sterm);
+        //getSynonyms aa = new getSynonyms();
+		//List<String> res = aa.getSynonyms1(sterm);
 		
+        suggestions aa = new suggestions();
+        List<String> res = aa.getSuggestionList(sterm);
 	      
         out.println("<html lang='en'><head><link rel='stylesheet' type='text/css' href='circle.css'><link href='http://getbootstrap.com/dist/css/bootstrap.min.css' rel='stylesheet'></head><body bgcolor='#eee' style='margin: 60px;'><div class='content'><h1>Suggestion</h1><hr>");
         out.println("<h3>User Input:   <a href='http://www.google.com/search?q="+sterm+"'><kbd>"+sterm+"</kbd></a></h3>");
