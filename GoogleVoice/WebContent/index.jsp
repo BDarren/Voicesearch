@@ -17,6 +17,9 @@
 	<link rel="stylesheet" type="text/css" href="circle.css">
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<%
    		String word = request.getParameter( "stopword" );
    		session.setAttribute( "stopword", word );
@@ -76,7 +79,7 @@
      			Upgrade to <a href="//www.google.com/chrome">Chrome</a>
      			version 25 or later.</p>
 			</div>
-  			<input type="search" class="form-control" id="final_span" name = "final_span">
+  			<select class="form-control" id="final_span" name = "final_span"></select>
   			<br>
 			<button id="search_button" type="submit" class="btn btn-info btn-lg">
       			<span class="glyphicon glyphicon-search"></span> Search
@@ -108,6 +111,7 @@ if (!('webkitSpeechRecognition' in window)) {
   start_button.style.display = 'inline-block';
   var recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
+  recognition.maxAlternatives = 10;
   recognition.interimResults = true;
   recognition.onstart = function() {
     recognizing = true;
@@ -147,20 +151,28 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('');
   };
   recognition.onresult = function(event) {
-    var interim_transcript = '';
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
+    //var interim_transcript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {    	
+      if (event.results[i].isFinal) {  
         final_transcript += event.results[i][0].transcript;
-      } else {
-        interim_transcript += event.results[i][0].transcript;
-      }
+        for(var j = 0; j < event.results[i].length; ++j){
+        	var text = event.results[i][j].transcript;
+        	final_span.options[j] = new Option(text, text);
+        }      
+      } //else {
+        //interim_transcript += event.results[i][0].transcript;
+        //for(var j = 0; j < event.results[i].length; ++j){
+        	//var text = event.results[i][j].transcript;
+        	//final_span.options[j] = new Option(text, text);
+        //} 
+     // }
     }
-    document.getElementById('final_span').value = linebreak(final_transcript)+linebreak(interim_transcript);
-    var index = final_transcript.indexOf(stopword);
-    if(index != -1){
-    	document.getElementById('final_span').value = final_transcript.substring(0, index);
-    	document.getElementById("search_button").click();
+    document.getElementById('final_span').value = linebreak(final_transcript);
+    if(document.getElementById('final_span').selectedIndex!=-1){
+    	document.getElementById('start_button').click();
     }
+    //var index = final_transcript.indexOf(stopword);
+
   };
 }
 function upgrade() {
@@ -177,6 +189,7 @@ function startButton(event) {
     recognition.stop();
     return;
   }
+  final_span.options.length = 0;
   final_transcript = '';
   recognition.lang = 'en-US';
   recognition.start();
