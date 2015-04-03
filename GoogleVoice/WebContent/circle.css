@@ -10,10 +10,10 @@
 }
 
 .tablestyle{
-	padding-left: 10%;
+	padding-left: 5%;
 }
 
-.menu{
+.menu1{
 	display:table;
 	width:300px;
 	height:300px;
@@ -28,8 +28,104 @@
 	vertical-align: middle;
 	background:#26d5aa;
 	position: relative;
-    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */
-    
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */ 
+}
+
+.menu2{
+	display:table;
+	width:300px;
+	height:300px;
+	border-radius:150px;
+	margin-top:35px;
+	margin-right:40px;
+	font-size:28px;
+	color:#fff;
+	//line-height:100px;
+	opacity:0.82;
+	text-align:center;
+	text-decoration:none;
+	vertical-align: middle;
+	background:#26d5aa;
+	position: relative;
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */  
+}
+
+.menu3{
+	display:table;
+	width:300px;
+	height:300px;
+	border-radius:150px;
+	margin-top:35px;
+	margin-right:40px;
+	font-size:28px;
+	color:#fff;
+	//line-height:100px;
+	opacity:0.7;
+	text-align:center;
+	text-decoration:none;
+	vertical-align: middle;
+	background:#26d5aa;
+	position: relative;
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */  
+}
+
+
+
+.menu4{
+	display:table;
+	width:300px;
+	height:300px;
+	border-radius:150px;
+	margin-top:35px;
+	margin-right:40px;
+	font-size:28px;
+	color:#fff;
+	//line-height:100px;
+	opacity:0.59;
+	text-align:center;
+	text-decoration:none;
+	vertical-align: middle;
+	background:#26d5aa;
+	position: relative;
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */  
+}
+
+.menu5{
+	display:table;
+	width:300px;
+	height:300px;
+	border-radius:150px;
+	margin-top:35px;
+	margin-right:40px;
+	font-size:28px;
+	color:#fff;
+	//line-height:100px;
+	opacity:0.45;
+	text-align:center;
+	text-decoration:none;
+	vertical-align: middle;
+	background:#26d5aa;
+	position: relative;
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */  
+}
+
+.menu6{
+	display:table;
+	width:300px;
+	height:300px;
+	border-radius:150px;
+	margin-top:35px;
+	margin-right:40px;
+	font-size:28px;
+	color:#fff;
+	//line-height:100px;
+	opacity:0.3;
+	text-align:center;
+	text-decoration:none;
+	vertical-align: middle;
+	background:#26d5aa;
+	position: relative;
+    //-webkit-animation: myfirst 5s linear 5s infinite alternate; /* Chrome, Safari, Opera */  
 }
 
 .tempspan{
