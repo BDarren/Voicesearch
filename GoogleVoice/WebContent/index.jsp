@@ -41,7 +41,7 @@
     	</div>
     	<div class="col-sm-1">
 			<a class='btn btn-default' href='setting.jsp'>
-  					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+  					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Set Stopword
 			</a>
 			<input type="hidden" id="stopword" value= '<%= session.getAttribute("stopword")%>' />
     	</div>

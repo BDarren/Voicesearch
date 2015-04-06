@@ -133,7 +133,7 @@
   	vertical-align: middle; 
   	text-align: center; 
 }
-.menu:hover{
+.menu1:hover,.menu2:hover,.menu3:hover,.menu4:hover,.menu5:hover,.menu6:hover{
 	color:#ffffff;
 	text-decoration:none;
 	background:#5c5757;
