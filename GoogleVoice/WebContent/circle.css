@@ -144,3 +144,13 @@
     50%  {background-color:yellow; left:200px; top:0px;}
     100% {background-color:red; left:0px; top:0px;}
 }
+
+.searchButton1 {
+	float: left;
+	margin-left: 320px;
+}
+
+.searchButton2 {
+	float: left;
+	margin-left: 50px;
+}

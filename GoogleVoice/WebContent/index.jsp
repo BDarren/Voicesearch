@@ -80,21 +80,27 @@
      			version 25 or later.</p>
 			</div>
   			<select class="form-control" id="final_span" name = "final_span"></select>
-  			<br>
-			<button id="search_button" type="submit" class="btn btn-info btn-lg">
-      			<span class="glyphicon glyphicon-search"></span> Suggestion
-    		</button>
+  			
 
     		</div>
-    		<div class="col-sm-2">
+    		
     			<p></p>
     		  	<button id="start_button" onclick="startButton(event)" type="button">
     			<img id="start_img" src="mic.gif" alt="Start"></button> 
+    		<p>&nbsp</p>
+    		<br>
+    		<div class="searchButton1">
+			<button id="search_button" type="submit" class="btn btn-info btn-lg">
+      			<span class="glyphicon glyphicon-search"></span> Suggestion
+    		</button>
     		</div>
     		</form>
+    		
+    		<div class="searchButton2">
     		<button id="button" class="btn btn-info btn-lg" onclick="SearchGoogle()">
       			<span class="glyphicon glyphicon-search"></span> Search
     		</button>
+    		</div>
     	</div>
 
     </div>
