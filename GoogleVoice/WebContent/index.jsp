@@ -82,8 +82,9 @@
   			<select class="form-control" id="final_span" name = "final_span"></select>
   			<br>
 			<button id="search_button" type="submit" class="btn btn-info btn-lg">
-      			<span class="glyphicon glyphicon-search"></span> Search
+      			<span class="glyphicon glyphicon-search"></span> Suggestion
     		</button>
+
     		</div>
     		<div class="col-sm-2">
     			<p></p>
@@ -91,6 +92,9 @@
     			<img id="start_img" src="mic.gif" alt="Start"></button> 
     		</div>
     		</form>
+    		<button id="button" class="btn btn-info btn-lg" onclick="SearchGoogle()">
+      			<span class="glyphicon glyphicon-search"></span> Search
+    		</button>
     	</div>
 
     </div>
@@ -210,7 +214,10 @@ function showInfo(s) {
     info.style.visibility = 'hidden';
   }
 }
-
+function SearchGoogle(){
+    var Searchtxt = document.getElementById("final_span").value;
+    window.location = "http://www.google.com/search?q=" + Searchtxt;
+}
 
 </script>
   </body>
